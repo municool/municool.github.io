@@ -2,34 +2,51 @@
  * Created by nvmuni on 23.12.16.
  */
 
-function bauer(pos, faction) {
-    this.pos = pos;
+
+function bauer(posX, posY, faction) {
+    this.posX = posX;
+    this.posY = posY;
     this.faction = faction;
+    this.width = 30;
     var isActive = false;
-    this.strokeColor = color(255);
+    var strokeColor = getStrokeColor(this.faction);
+    var activeStrokeColor = color(252, 82, 82, 255);
 
     this.display = function () {
-        stroke(this.strokeColor);
-        if (faction === "black") {
-            fill(0);
-        }
-        else {
-            fill(255);
-        }
-        ellipse(mouseX, mouseY, 20, 20);
-    }
+        fill(faction);
+        stroke(strokeColor);
+        ellipse(this.posX, this.posY, this.width, this.width);
+    };
 
     this.makeMove = function () {
         //move shit
-    }
+    };
 
-    this.changeActivity = function () {
+    this.isClicked = function () {
+        var d = dist(mouseX, mouseY, this.posX, this.posY)
+        if (d < this.width) {
+            changeActivity();
+        }
+    };
+
+    function changeActivity() {
         if (isActive) {
             isActive = false;
+            strokeColor = getStrokeColor(this.faction);
         }
         else {
-            this.strokeColor = color(252,82,82,255);
+            strokeColor = activeStrokeColor;
             isActive = true;
         }
     }
 }
+
+function getStrokeColor(faction) {
+    if (faction === color(255)) {
+        return color(0);
+    }
+    else {
+        return color(255);
+    }
+}
+

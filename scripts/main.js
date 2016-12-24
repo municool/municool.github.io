@@ -3,25 +3,24 @@
  */
 
 var figures = [];
+var playGround;
 
 function setup() {
     createCanvas(600, 600);
-
-
+    figures.push(new bauer(100, 50, color(0)));
+    playGround = new PlayGround(600, 8);
+    playGround.initPlayGround();
 }
 
 function draw() {
-    var playGround = new PlayGround(600, 8);
     playGround.drawPlayGround();
-
-    figures.push(new bauer(50,"black"));
-    for(var i = 0; i< figures.length; i++){
+    for (var i = 0; i < figures.length; i++) {
         figures[i].display();
     }
 }
 
-function mouseClicked() {
-    for(var i = 0; i< figures.length; i++){
-        figures[i].changeActivity();
+function mousePressed() {
+    for (var i = 0; i < figures.length; i++) {
+        figures[i].isClicked();
     }
 }
