@@ -1,7 +1,3 @@
-/**
- * Created by nvmuni on 23.12.16.
- */
-
 
 function PlayGround(playgroundWidth, tilesperline) {
     this.tilesite = playgroundWidth;
@@ -52,25 +48,5 @@ function PlayGround(playgroundWidth, tilesperline) {
             posx = posx + tileWidth;
             posy = 0;
         }
-
-    };
-}
-
-function tiles(x, y, width, col) {
-    this.wid = width;
-    this.col = col;
-    this.strokeColor = color(0);
-    this.X = x;
-    this.Y = y;
-    this.figur = null;
-
-    this.display = function () {
-        stroke(this.strokeColor);
-        fill(this.col);
-        rect(this.X, this.Y, this.wid, this.wid);
-    };
-
-    this.placeFigureOnHere = function () {
-      //get the figure on here
     };
 }

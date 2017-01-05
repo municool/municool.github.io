@@ -1,14 +1,10 @@
-/**
- * Created by nvmuni on 23.12.16.
- */
 
-
-function bauer(posX, posY, faction) {
+function peasant(posX, posY, faction) {
     this.posX = posX;
     this.posY = posY;
     this.faction = faction;
     this.width = 30;
-    var isActive = false;
+    this.isActive = false;
     var strokeColor = getStrokeColor(this.faction);
     var activeStrokeColor = color(252, 82, 82, 255);
 
@@ -25,18 +21,18 @@ function bauer(posX, posY, faction) {
     this.isClicked = function () {
         var d = dist(mouseX, mouseY, this.posX, this.posY)
         if (d < this.width) {
-            changeActivity();
+            this.changeActivity();
         }
     };
 
-    function changeActivity() {
-        if (isActive) {
-            isActive = false;
+    this.changeActivity = function () {
+        if (this.isActive) {
+            this.isActive = false;
             strokeColor = getStrokeColor(this.faction);
         }
         else {
             strokeColor = activeStrokeColor;
-            isActive = true;
+            this.isActive = true;
         }
     }
 }
